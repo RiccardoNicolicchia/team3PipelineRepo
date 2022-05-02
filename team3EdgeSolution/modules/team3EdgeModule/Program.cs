@@ -77,9 +77,20 @@ namespace team3EdgeModule
             string currentString = $"{{\"noiseLevel\":{currentdb}}},{{\"timestamp\":{tokens[1]}";
 
             Console.WriteLine($"Received message: {counterValue}, Body: [{currentString}]");
-            Console.WriteLine("Received message sent");
 
+            if (!string.IsNullOrEmpty(messageString))
+            {
+                using (var pipeMessage = new Message(messageBytes))
+                {
+                    foreach (var prop in message.Properties)
+                    {
+                        pipeMessage.Properties.Add(prop.Key, prop.Value);
+                    }
+                    await moduleClient.SendEventAsync("output1", pipeMessage);
 
+                    Console.WriteLine("Received message sent");
+                }
+            }
             return MessageResponse.Completed;
         }
     }
