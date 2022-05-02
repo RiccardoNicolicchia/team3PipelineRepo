@@ -11,9 +11,9 @@
             "loggingOptions": "",
             "registryCredentials": {
               "group3containerregistry": {
-                "username": "$CONTAINER_REGISTRY_USERNAME_group3containerregistry",
-                "password": "$CONTAINER_REGISTRY_PASSWORD_group3containerregistry",
-                "address": "group3containerregistry.azurecr.io"
+                "username": "${ACR_USER}",
+                "password": "$${ACR_PASSWORD}",
+                "address": "${ACR_ADDRESS}"
               }
             }
           }

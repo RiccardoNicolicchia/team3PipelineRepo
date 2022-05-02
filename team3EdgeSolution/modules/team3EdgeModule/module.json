@@ -2,7 +2,7 @@
     "$schema-version": "0.0.1",
     "description": "",
     "image": {
-        "repository": "group3containerregistry.azurecr.io/team3edgemodule",
+        "repository": "${ACR_ADDRESS}/team3edgemodule",
         "tag": {
             "version": "0.0.1",
             "platforms": {
