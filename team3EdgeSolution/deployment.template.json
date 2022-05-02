@@ -12,7 +12,7 @@
             "registryCredentials": {
               "group3containerregistry": {
                 "username": "${ACR_USER}",
-                "password": "$${ACR_PASSWORD}",
+                "password": "${ACR_PASSWORD}",
                 "address": "${ACR_ADDRESS}"
               }
             }
