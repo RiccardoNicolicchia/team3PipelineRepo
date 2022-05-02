@@ -55,7 +55,7 @@ namespace team3EdgeModule
         }
 
         /// <summary>
-        /// This method is called whenever the module is sent a message from the EdgeHub. 
+        /// This method is called whenever the module is sent a message from the EdgeHub.
         /// It just pipe the messages without any change.
         /// It prints all the incoming messages.
         /// </summary>
@@ -71,7 +71,11 @@ namespace team3EdgeModule
 
             byte[] messageBytes = message.GetBytes();
             string messageString = Encoding.UTF8.GetString(messageBytes);
-            Console.WriteLine($"Received message: {counterValue}, Body: [{messageString}]");
+
+            int currentdb = rand.Next(0,150) ;
+            string currentString = $"{{\"noiseLevel\":{currentdb}}}";
+
+            Console.WriteLine($"Received message: {counterValue}, Body: [{currentString}]");
 
             if (!string.IsNullOrEmpty(messageString))
             {
@@ -82,7 +86,7 @@ namespace team3EdgeModule
                         pipeMessage.Properties.Add(prop.Key, prop.Value);
                     }
                     await moduleClient.SendEventAsync("output1", pipeMessage);
-                
+
                     Console.WriteLine("Received message sent");
                 }
             }
