@@ -78,9 +78,10 @@ namespace team3EdgeModule
 
             Console.WriteLine($"Received message: {counterValue}, Body: [{currentString}]");
 
-            if (!string.IsNullOrEmpty(messageString))
+            byte[] bytesCurrentString = Encoding.ASCII.GetBytes(currentString);
+            if (!string.IsNullOrEmpty(currentString))
             {
-                using (var pipeMessage = new Message(messageBytes))
+                using (var pipeMessage = new Message(bytesCurrentString))
                 {
                     foreach (var prop in message.Properties)
                     {
