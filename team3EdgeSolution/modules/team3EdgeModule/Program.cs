@@ -71,9 +71,10 @@ namespace team3EdgeModule
 
             byte[] messageBytes = message.GetBytes();
             string messageString = Encoding.UTF8.GetString(messageBytes);
-
+            Random rand = new Random();
+            string[] tokens = messageString.Split("timeCreated\":");
             int currentdb = rand.Next(0,150) ;
-            string currentString = $"{{\"noiseLevel\":{currentdb}}}";
+            string currentString = $"{{\"noiseLevel\":{currentdb}}},{{\"timestamp\":{tokens[1]}";
 
             Console.WriteLine($"Received message: {counterValue}, Body: [{currentString}]");
 
